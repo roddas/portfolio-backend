@@ -1,0 +1,8 @@
+*{margin:0;padding:0;line-height:150%;font-family: 'Lato',sans-serif;}
+html{font-size:62.5%;}
+body{background-color:#f2f2f2ff;}
+p,a,li{font-size:3rem;color:#647593ff;}
+a{text-decoration:none;}
+.center{text-align:center;}
+.left{text-align:left;}
+.page{width: 95%;margin:0 auto;}
