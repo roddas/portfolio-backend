@@ -7,4 +7,4 @@
 .content{text-align:justify;margin-top:5%;}
 li{display:inline-flex;padding:2%;}
 ul{margin-left:5%;margin-top:5%;}
-img{width:75%;height: 75%;margin:1%;}
+ul li img{width:5rem;height: 5rem;margin:1%;}
