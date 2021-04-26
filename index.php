@@ -1,62 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu portfólio</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="view/public/css/standard.css">
-    <link rel="stylesheet" href="view/public/css/index.css">
-</head>
-<body>
-    <div class="header">
-        <h1 class="full-name center" >Rodolfo Cabral Neves</h1>
-    </div>
-    <div class="page">
-        <div class="content">
-            <h2 class="title center">Formação </h2>
-            <p class='left'>Estudante do sétimo semestre de Engenharia de Software na Universidade de Brasília</p>
-        </div>
-        <div class="content">
-            <h2 class="title center">Habilidades </h2>
-            <ul>
-                <li><img src="view/public/img/c.svg" alt="C"></li>
-                <li><img src="view/public/img/cpp.svg" alt="C++"></li>
-                <li><img src="view/public/img/html-5.svg" alt="HTML5"></li>
-                <li><img src="view/public/img/css.svg" alt="CSS3"></li>
-                <li><img src="view/public/img/javascript.svg" alt="Javascript(ES6)"></li>
-                <li><img src="view/public/img/typescript.svg" alt="Typescript"></li>
-                <li><img src="view/public/img/nodejs.svg" alt="NodeJS"></li>
-                <li><img src="view/public/img/php.svg" alt="PHP"></li>
-                <li><img src="view/public/img/mysql.svg" alt="MySQL Server"></li>
-                <li><img src="view/public/img/java.svg" alt="Java"></li>
-                <li><img src="view/public/img/github.svg" alt="GitHub"></li>
-                <li><img src="view/public/img/gnu-bash.svg" alt="Shell Script"></li>
-                <li><img src="view/public/img/python.svg" alt="Python3"></li>
-            </ul>
-        </div>
-        <div class="content">
-            <h2 class="title center">Idiomas </h2>
-            <p>Português - Língua Materna</p>
-            <p>Inglês - B2</p>
-        </div>
-        <div class="content">
-            <h2 class="title center">Experiência de trabalho </h2>
-            <p>return NULL;</p>
-        </div>
-        <div class="content">
-            <h2 class="title center">Contatos </h2>
-            <ul>
-                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> roddas360@gmail.com</li>
-                <li><a href="https://www.linkedin.com/in/rodolfo-neves-937324158/"><i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                    Rodolfo Neves</a></li>
-                <li><a href="https://github.com/roddas"><i class="fa fa-github" aria-hidden="true"></i>
-                    roddas</a></li>
-            </ul>
-        </div>
-    </div>
-</body>
-</html>
+<?php
+require_once('Routes.php');
+
+function __autoload($class)
+{
+    $file  = $class . '.php';
+    if(file_exists('Libraries/Classes/' .$file))
+    {
+        require_once('Libraries/Classes/' .$file);
+    }else if(file_exists('Controllers/'. $file))
+    {
+        require_once('Controllers/' .$file);
+    }
+}
+?>
