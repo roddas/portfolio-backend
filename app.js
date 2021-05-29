@@ -9,7 +9,7 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/',require('./routes/me'));
-app.use('/',require('./routes/projects'));
+app.use('/projects',require('./routes/projects'));
 
 app.use((request,response) =>{
     response.status(404).render("404");

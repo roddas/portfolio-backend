@@ -5,7 +5,16 @@ html(lang="pt-br")
         title Me
     body 
         include _parts/menu
-        .container
-            
+        .container.mt-5
+            .columns.is-vcentered
+                .column
+                    img.projectImage(src="img/recovery.svg", alt="Project Image",width='150px',height='150px')
+                .column
+                    p.id.has-text-weight-bold Nome do projecto
+                    p.description.has-text-justified Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nunc id lacus odio. 
+                    | Quisque elit est, egestas id gravida eget, pulvinar non arcu. Vestibulum blandit fringilla semper.
+                    | Vivamus tristique ante ut quam gravida, ut tempor velit tincidunt.Maecenas varius, felis eu laoreet eleifend, ligula sem accumsan erat, ac ornare lectus odio consequat tellus. Duis vulputate, nibh nec fringilla pharetra, dolor magna sagittis diam, nec gravida elit sapien in sapien. Suspendisse auctor placerat nibh, vulputate ultricies dui consectetur et. Cras facilisis odio sed vestibulum luctus.
+                    p.id.has-text-weight-bold Estado : #[span.has-text-weight-normal Em Andamento]
+                    p.id.has-text-weight-bold Link : #[a(href="https://github.com/roddas/portfolio") https://github.com/roddas/portfolio]
         include _parts/footer
         script(src="js/standard.js") 

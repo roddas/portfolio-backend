@@ -1,6 +1,4 @@
 body{font-family:'Lato';}
 .navbar{box-shadow:0px 0px 4px #000;}
-.me{background:#42B3B3;color:#fff;}
-.projects{background:#663111;color:#fff;}
-.portfolio{background:#FFBB45;color:#fff;}
-.contacts{background:#B3534B;color:#fff;}
+.projectImage{width:256px;height:256px;margin-left:25%;}
+.id{color:#036;}
