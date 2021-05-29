@@ -1,0 +1,46 @@
+doctype html
+html(lang="pt-br")
+    head
+        include _parts/head
+        title Portfolio
+    body 
+        include _parts/menu
+        .container.mt-5.mb-5.has-text-justified
+            section.info
+                p.has-text-weight-bold.has-text-left Academic formation
+                p Seventh semester student of Software Engineering at the University of Brasilia
+                p.has-text-weight-bold.has-text-left.mt-5 Language and Tools 
+                section.is-inline-block.languages.mb-5
+                    img(src="img/c.svg", alt="C")
+                    img(src="img/cpp.svg", alt="C++")
+                    img(src="img/css.svg", alt="Css")
+                    img(src="img/github.svg", alt="GitHub")
+                    img(src="img/bash.svg", alt="GNU Bash")
+                    img(src="img/html.svg", alt="HTML 5")
+                    img(src="img/javascript.svg", alt="Javascript")
+                    img(src="img/java.svg", alt="Java")
+                    img(src="img/nodejs.svg", alt="NodeJS")
+                    img(src="img/php.svg", alt="PHP")
+                    img(src="img/python.svg", alt="Python")
+                    img(src="img/typescript.svg", alt="Typescript")
+                .columns
+                    .column
+                        p.has-text-weight-bold.has-text-left Technical knowledge 
+                        p  MVC design pattern 
+                        p  Data Structure and Algorithms
+                    .column
+                        p.has-text-weight-bold.has-text-left Idioms 
+                        p Portuguese - Mother tongue 
+                        p English - B2
+                .columns
+                    .column
+                        p.has-text-weight-bold.has-text-left Work experience 
+                        p return NULL;
+                    .column
+                        p.has-text-weight-bold.has-text-left Contacts 
+                        span #[a(href='https://www.github.com/roddas' target='_blank') https://www.github.com/roddas]
+                        br
+                        span #[a(href='https://www.linkedin.com/in/rodolfo-neves-937324158/' target='_blank') https://www.linkedin.com/in/rodolfo-neves-937324158 ]
+           
+        include _parts/footer
+        script(src="js/standard.js") 
