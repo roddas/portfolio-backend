@@ -1,0 +1,19 @@
+doctype html
+html(lang="pt-br")
+    head
+        include _parts/head
+        title Contacts
+    body 
+        include _parts/menu
+        .container.mt-5
+            h1.title.mb-5.has-text-centered.has-text-weight-light Get in touch with me through
+            .columns.is-vcentered
+                .column
+                    img.imageContact(src="img/linkedin.svg", alt="Linkedin")
+                .column
+                    img.imageContact(src="img/github.svg", alt="GitHub")
+                .column
+                    img.imageContact(src="img/gmail.svg", alt="GMail")
+
+        include _parts/footer
+        script(src="js/standard.js") 
