@@ -10,7 +10,6 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/',require('./routes/me'));
 app.use('/projects',require('./routes/projects'));
-app.use('/contacts',require('./routes/contacts'));
 
 app.use((request,response) =>{
     response.status(404).render("404");
