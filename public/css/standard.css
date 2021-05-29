@@ -4,4 +4,7 @@ body{font-family:'Lato';}
 .id{color:#036;}
 .imageContact{width: 5rem;height:5rem;padding:2%;}
 .info{width:60%;margin: 0 auto;}
+.c{width:40%;margin: 0 auto;}
 .languages img{width:5rem;height:5rem;padding : 2%;}
+#s{text-decoration: none;color:#4a4a4a}
+#s:hover{cursor:default;}
