@@ -1,0 +1,11 @@
+doctype html
+html(lang="pt-br")
+    head
+        include _parts/head
+        title Me
+    body 
+        include _parts/menu
+        .container.mt-5
+        
+        include _parts/footer
+        script(src="js/standard.js") 
