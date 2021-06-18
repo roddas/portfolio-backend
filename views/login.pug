@@ -8,10 +8,10 @@ html(lang="pt-br")
         .container.mt-5.has-text-centered
            section.c.center
                 .field.is-horizontal
-                form(action="/secret", method="post")
+                form(action="/login", method="post")
                     label.label Username
                     .control
-                        input.input(type="text" name='token' placeholder='Username')
+                        input.input(type="password" name='password' placeholder='Username')
                     .control
                         input.input.button.is-success.mb-3.mt-3(type="submit", value="Enviar")
                         input.input.button.is-primary(type="reset", value="Limpar")
