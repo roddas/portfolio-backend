@@ -1,20 +1,36 @@
 extends adminlayout
 block content
-
     .container
         div.mt-5.mb-5
             a.has-text-left(href="/logout") Sair 
-        .tabs.is-centered
-            ul
-                li
-                    a.is-active(href="#") Academic formation
-                li
-                    a(href="#") Language and Tools
-                li
-                    a(href="#") Technical knowledge
-                li
-                    a(href="#") Work experience
-                li
-                    a(href="#") Idioms 
-                li
-                    a(href="#") Contacts    
+        #tabs-with-content
+            .tabs.is-centered.is-boxed
+                ul
+                    li.is-active
+                        a(href="#") Academic formation
+                    li
+                        a(href="#") Language and Tools
+                    li
+                        a(href="#") Technical knowledge
+                    li
+                        a(href="#") Work experience
+                    li
+                        a(href="#") Idioms 
+                    li
+                        a(href="#") Contacts   
+            div
+                .tab-content
+                    p Academic formation contents 
+                .tab-content
+                    p Language and Tools contents 
+                .tab-content
+                    p Technical knowledge contents
+                .tab-content
+                    p Work experience contents 
+                .tab-content
+                    p Idioms contents
+                .tab-content
+                    p Contacts contents
+
+block scripts
+    script(src="/js/asset.js")
