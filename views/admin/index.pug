@@ -1,7 +1,20 @@
-doctype html
-html(lang="pt-br")
-    head
-        include ../_parts/head
-        title Secret
-    body
-        h1.title Olá
+extends adminlayout
+block content
+
+    .container
+        div.mt-5.mb-5
+            a.has-text-left(href="/logout") Sair 
+        .tabs.is-centered
+            ul
+                li
+                    a.is-active(href="#") Academic formation
+                li
+                    a(href="#") Language and Tools
+                li
+                    a(href="#") Technical knowledge
+                li
+                    a(href="#") Work experience
+                li
+                    a(href="#") Idioms 
+                li
+                    a(href="#") Contacts    
