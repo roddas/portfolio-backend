@@ -1,15 +1,11 @@
 const express = require('express');
 
 var router = express.Router();
-function validateSession(request,response)
-{
-    const {sessions} = response;
-   console.log(request.session);
-}
-router.get('/',validateSession,(request,response) =>{
-   if(request.query.token === process.env.TOKEN)
-   {
-       response.cookie('token_id','token_secret');
+
+router.get('/',(request,response) =>{
+
+   if(request.session.token !== undefined)
+   {   
        response.render('login');   
     }else
    {
@@ -22,7 +18,8 @@ router.post('/',(request,response) =>{
     const token = request.body.password;
     if(token === process.env.TOKEN2)
     {
-        response.redirect('/admin?token='+token);
+        request.session.token += process.env.TOKEN2;
+        response.redirect('/admin');
     }else
     {
         response.redirect('/');
