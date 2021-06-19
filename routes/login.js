@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieSession = require('cookie-parser');
 
 var router = express.Router();
 function validateSession(request,response)
