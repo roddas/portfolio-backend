@@ -8,6 +8,9 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME
 });
 
+const SUCCESS = 'success';
+const FAIL = 'fail';
+
 class Database
 {
     constructor(scopes = pool)
@@ -15,7 +18,7 @@ class Database
         //console.log(scopes);
         this.result = {};
     }
-    setResult(type,message)
+    setResult(type ,message)
     {
         this.result.type = type;
         this.result.message = message;
@@ -26,7 +29,23 @@ class Database
     }
     query(query,...params)
     {
-        
+        pool.getConnection((errorConnection, connection) => {
+
+            if (errorConnection) {
+                this.setResult(FAIL, errorConnection.message);
+            }else
+            {
+                connection.query(query, (errQuery, rows) => {
+                    connection.release();
+                    if (errQuery) {
+                        this.setResult(FAIL, errQuery.message);
+                    } else {
+                        this.setResult(SUCCESS,rows);
+                    }
+                });
+            }
+            
+        });
     }
 }
 
