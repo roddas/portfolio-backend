@@ -19,8 +19,30 @@ block content
                     li
                         a(href="#") Contacts   
             div
-                .tab-content
-                    p Academic formation contents 
+                .content
+                    .tab-content.tab-container
+                        table.table
+                            thead
+                                tr 
+                                    th ID 
+                                    th Descrição
+                                    th Ação
+                            tb
+                                each value in formacaoAcademica
+                                    tr
+                                        td #{formacaoAcademica.id}
+                                        td #{formacaoAcademica.descricao}
+                                        td 
+                                            a.btn.btn-light.btn-small(href='/edit/' type='button') Editar&nbsp;&nbsp;
+                                            a.btn.btn-light.btn-small(href='/delete/' type='button') Eliminar
+                    form.mt-5(action="#", method="post")
+                        .field
+                            p.control
+                                input.input(type="text", name="descricao" required)
+                            p.control
+                                button.btn.btn-primary Inserir
+                        
+
                 .tab-content
                     p Language and Tools contents 
                 .tab-content
