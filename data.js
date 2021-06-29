@@ -7,7 +7,8 @@ async function dbConnect()
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         host: process.env.DB_HOST,
-        database: process.env.DB_NAME
+        database: process.env.DB_NAME,
+        connectionLimit:100
     });
     return await pool.getConnection();
 }
