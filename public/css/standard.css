@@ -12,3 +12,5 @@ body{font-family:'Lato';}
 #tabs-with-content .tab-content {padding: 1rem;display: none;}
 #tabs-with-content .tab-content.is-active {display: block;}
 .content{margin : 0 auto;}
+.link{text-decoration:underline;};
+.link:hover{cursor:pointer};
