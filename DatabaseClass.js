@@ -54,16 +54,6 @@ class Database
         }
         return idName;
     }
-    /*
-    async removeElementById(table,object,idValue)
-    {
-        const idField = this.getIdKey();
-        const QUERY = `DELETE * FROM ${table} WHERE ${idField} = ?;`;
-        let connection = await dbConnect();
-        const [rows] = await connection.query(QUERY, [idValue]);
-        await connection.release();
-    }
-    */
     async insertElement(table,elements)
     {
         let query = `INSERT INTO ${table} VALUES (NULL,`;
