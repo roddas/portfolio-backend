@@ -28,20 +28,21 @@ block content
                                     th Descrição
                                     th Ação
                             tb
-                                each value in formacaoAcademica
+                                each val in formacaoAcademica
                                     tr
-                                        td #{formacaoAcademica.id}
-                                        td #{formacaoAcademica.descricao}
+                                        td.id= val.id_formacao
+                                        td.texto= val.descricao_formacao
                                         td 
-                                            a.btn.btn-light.btn-small(href='/edit/' type='button') Editar&nbsp;&nbsp;
-                                            a.btn.btn-light.btn-small(href='/delete/' type='button') Eliminar
-                    form.mt-5(action="#", method="post")
+                                            a.link.edit(href='#') Editar
+                                            |&nbsp;&nbsp;&nbsp;
+                                            a.link.delet(href='#') Eliminar
+                    form.mt-5(action="#", method="POST")
                         .field
                             p.control
                                 input.input(type="text", name="descricao" required)
+                                input.hidden(type='hidden' name='table' value='formacao_academica')
                             p.control
-                                button.btn.btn-primary Inserir
-                        
+                                input.btn.btn-primary(type="submit", val="Inserir")
 
                 .tab-content
                     p Language and Tools contents 
