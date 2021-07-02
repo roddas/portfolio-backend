@@ -39,7 +39,7 @@ class Projectos
         await connection.release();
         return rows[0];
     }
-    async removProjecto(id)
+    async removeProjecto(id)
     {
         const QUERY = `DELETE FROM ${this.getTable()} WHERE ${this.getIdField()} = ?;`;
         let connection = await dbConnect();

@@ -76,20 +76,49 @@ sendButton.addEventListener('click', e =>
        header.append('Content-Type','application/json');
        let hidden = document.querySelector('.hidden').getAttribute('value');
        let id = document.querySelector('.id').textContent;
-       console.log(id);
        var metaData = {
-           method: 'PATCH',
+           method: 'POST',
            headers: header,
            body: JSON.stringify({ descricao: textBox.value, table : hidden,idElement : id})
        }
-       try 
+       try
        {
-           let result = await fetch('#', metaData);
-           console.log(result);
+           let result = await fetch('/admin/edit', metaData);
+           let response = await result.json();
+           alert(response.message);
+           location.reload();
        }
-       catch (e) 
+       catch(e)
        {
-           console.log(e);
+           console.error(e);
        }
+
    })();
+});
+
+deleteButton.addEventListener('click', e => {
+    e.preventDefault();
+    (async () => {
+        var header = new Headers();
+        header.append('Content-Type', 'application/json');
+        let hidden = document.querySelector('.hidden').getAttribute('value');
+        let id = document.querySelector('.id').textContent;
+        var metaData = {
+            method: 'POST',
+            headers: header,
+            body: JSON.stringify({table: hidden, idElement: id })
+        }
+        try
+        {
+            let result = await fetch('/admin/delete', metaData);
+            let response = await result.json();
+            alert(response.message);
+            location.reload();
+        }
+        catch (e)
+        {
+            console.error(e);
+        }
+
+    })();
 });
