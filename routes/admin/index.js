@@ -1,35 +1,46 @@
 const express = require('express');
-const {Database} = require('../../DatabaseClass');
-const NodeCache = require('node-cache');
+const { Projectos } = require('../../bin/databasesClasses/autoloader');
+const { ConhecimentosTecnicos } = require('../../bin/databasesClasses/autoloader');
+const { Contactos } = require('../../bin/databasesClasses/autoloader');
+const { Experiencia } = require('../../bin/databasesClasses/autoloader');
+const { FormacaoAcademica } = require('../../bin/databasesClasses/autoloader');
+const { Idiomas } = require('../../bin/databasesClasses/autoloader');
+const { LinguagensFerramentas } = require('../../bin/databasesClasses/autoloader');
 
 var router = express.Router();
 
 router.get('/',async (request,response) =>{
     if (request.session.token === (process.env.TOKEN + process.env.TOKEN2) )
     {
-        const dataBase = new Database();
+        let projectos = new Projectos();
+        let conhecimentosTecnicos = new ConhecimentosTecnicos();
+        let contactos = new Contactos();
+        let experiencia = new Experiencia();
+        let linguagensFerramentas = new LinguagensFerramentas();
+        let formacaoAcademica = new FormacaoAcademica();
+        let idiomas = new Idiomas();
+
         let title = 'Admin Page';
         if(request.session.data === undefined)
         {
             request.session.data = true;
-            request.session.formacaoAcademica = await dataBase.getAllElements('formacao_academica');
-            request.session.conhecimentosTecnicos = await dataBase.getAllElements('conhecimentos_tecnicos');
-            request.session.contactos = await dataBase.getAllElements('	contactos');
-            request.session.experiencia = await dataBase.getAllElements('experiencia');
-            request.session.idiomas = await dataBase.getAllElements('idiomas');
-            request.session.linguagensFerramentas = await dataBase.getAllElements('linguagens_ferramentas');
-            request.session.projectos = await dataBase.getAllElements('projectos');
+            request.session.formacaoAcademica = await formacaoAcademica.getFormacaoAcademica();
+            request.session.conhecimentosTecnicos = await conhecimentosTecnicos.getConhecimentosTecnicos();
+            request.session.contactos = await contactos.getContactos();
+            request.session.experiencia = await experiencia.getExperiencia();
+            request.session.idiomas = await idiomas.getIdiomas();
+            request.session.linguagensFerramentas = await linguagensFerramentas.getLinguagensFerramentas();
+            request.session.projectos = await projectos.getProjectos();
         }
-        let formacaoAcademica = request.session.formacaoAcademica;
-        let conhecimentosTecnicos = request.session.formacaoAcademica;
-        let contactos = request.session.contactos;
-        let experiencia = request.session.experiencia;
-        let idiomas = request.session.idiomas;
-        let linguagensFerramentas = request.session.linguagensFerramentas;
-        let projectos = request.session.projectos;
-        
-        //console.log(formacaoAcademica);
-        
+
+        formacaoAcademica = request.session.formacaoAcademica;
+        conhecimentosTecnicos = request.session.formacaoAcademica;
+        contactos = request.session.contactos;
+        experiencia = request.session.experiencia;
+        idiomas = request.session.idiomas;
+        linguagensFerramentas = request.session.linguagensFerramentas;
+        projectos = request.session.projectos;
+                
         response.render('admin/index', {
             formacaoAcademica,
             conhecimentosTecnicos,
@@ -45,12 +56,6 @@ router.get('/',async (request,response) =>{
     {
         response.redirect('/');
     }
-});
-
-router.get('/', async (request, response) => {
-    const { tabela } = request.query;
-    const { id } = request.query;
-    response.json(tabela,id);
 });
 
 router.patch('/',async (request,response) =>{
