@@ -4,7 +4,8 @@
   "description": "My personal portofolio",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon bin/www"
+    "test": "nodemon bin/www",
+    "tdd": "jest"
   },
   "repository": {
     "type": "git",
