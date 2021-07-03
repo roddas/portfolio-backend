@@ -9,15 +9,15 @@ block content
                     li.is-active
                         a(href="#") Academic formation
                     li
-                        a(href="#") Language and Tools
+                        a(href="#" id='element' table='linguagens_ferramentas') Language and Tools
                     li
-                        a(href="#") Technical knowledge
+                        a(href="#" id='element' table='conhecimentos_tecnicos') Technical knowledge
                     li
-                        a(href="#") Work experience
+                        a(href="#" id='element' table='experiencia') Work experience
                     li
-                        a(href="#") Idioms 
+                        a(href="#" id='element' table='idiomas') Idioms 
                     li
-                        a(href="#") Contacts   
+                        a(href="#" id='element' table='contactos') Contacts   
             div
                 .content
                     .tab-content.tab-container
@@ -33,19 +33,37 @@ block content
                                         td.id= val.id_formacao
                                         td.texto= val.descricao_formacao
                                         td 
+                                            a.link.edit(href='/admin/edit/formacao_academica/'+val.id_formacao) Editar
+                                            |&nbsp;&nbsp;&nbsp;
+                                            a.link.delet(href='/admin/delete/formacao_academica/'+val.id_formacao) Eliminar
+                        form.mt-5#formacaoAcademicaForm(action="/admin/add", method="POST")
+                            .field
+                                p.control
+                                    input(type="hidden", name="table",value='formacao_academica')
+                                    input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
+                                    input.button.is-info.mt-3.submit(type="submit", value="Inserir")
+                    .tab-content.tab-container
+                        table.table
+                            thead
+                                tr 
+                                    th ID 
+                                    th Descrição
+                                    th Ação
+                            tb
+                                each val in linguagensFerramentas
+                                    tr
+                                        td.id= val.id_ferramenta
+                                        td.texto= val.imagem_ferramenta
+                                        td 
                                             a.link.edit(href='#') Editar
                                             |&nbsp;&nbsp;&nbsp;
                                             a.link.delet(href='#') Eliminar
-                    form.mt-5(action="#", method="POST")
-                        .field
-                            p.control
-                                input.input(type="text", name="descricao" required)
-                                input.hidden(type='hidden' name='table' value='formacao_academica')
-                            p.control
-                                input.btn.btn-primary(type="submit", val="Inserir")
-
-                .tab-content
-                    p Language and Tools contents 
+                        form.mt-5(action="#", method="POST")
+                            .field
+                                p.control
+                                    input(type="hidden", name="table",value='formacao_academica')
+                                    input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
+                                    input.button.is-info.mt-3.submit(type="submit", value="Inserir")
                 .tab-content
                     p Technical knowledge contents
                 .tab-content
