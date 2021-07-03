@@ -25,6 +25,7 @@ app.use('/admin', require('./routes/admin/index'));
 app.use('/logout', require('./routes/admin/logout'));
 app.use('/admin/edit', require('./routes/admin/edit'));
 app.use('/admin/delete', require('./routes/admin/delete'));
+app.use('/admin/add', require('./routes/admin/add'));
 
 
 app.use((request,response) =>{
