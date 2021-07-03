@@ -1,0 +1,53 @@
+extends adminlayout
+block content
+    .container
+        div.mt-5.mb-5
+            a.has-text-left(href="/logout") Logout &nbsp;&nbsp;
+            a.has-text-left(href="/admin") Voltar  
+        #tabs-with-content
+            .tabs.is-centered.is-boxed
+                ul
+                    li.is-active
+                        a(href="#" id='formacao_academica' table='formacao_academica') Academic formation
+                    li
+                        a(href="#" id='linguagens_ferramentas' table='linguagens_ferramentas') Language and Tools
+                    li
+                        a(href="#" id='conhecimentos_tecnicos' table='conhecimentos_tecnicos') Technical knowledge
+                    li
+                        a(href="#" id='experiencia' table='experiencia') Work experience
+                    li
+                        a(href="#" id='idiomas' table='idiomas') Idioms 
+                    li
+                        a(href="#" id='contactos' table='contactos') Contacts   
+            div
+                .content
+                    .tab-content.tab-container
+                        table.table
+                            thead
+                                tr 
+                                    th ID 
+                                    th Descrição
+                                    th Ação
+                            tb
+                                each val in formacaoAcademica
+                                    tr
+                                        td.id= val.id_formacao
+                                        td.texto= val.descricao_formacao
+                                        td 
+                                            a.link.edit(href='#') Editar
+                                            |&nbsp;&nbsp;&nbsp;
+                                            a.link.delet(href='#') Eliminar
+
+                .tab-content
+                    p Language and Tools contents 
+                .tab-content
+                    p Technical knowledge contents
+                .tab-content
+                    p Work experience contents 
+                .tab-content
+                    p Idioms contents
+                .tab-content
+                    p Contacts contents
+
+block scripts
+    script(src="/js/asset.js")
