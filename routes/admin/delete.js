@@ -41,6 +41,23 @@ tableClass.set('projectos', async (idElement)=>{
     await projectos.removProjecto(idElement);
 });
 
+router.get('/:table/:id', async (request, response) => {
+    if (request.session.token === (process.env.TOKEN + process.env.TOKEN2))
+    {
+        const { table, id } = request.params;
+        let objectClass = tableClass.get(table);
+        if (objectClass === undefined)
+        {
+            response.redirect('/');
+        }
+        await objectClass(id);
+        response.redirect('/admin');
+    }
+    else 
+    {
+        response.redirect('/');
+    }
+});
 router.post('/',async (request,response) =>{
     if (request.session.token === (process.env.TOKEN + process.env.TOKEN2) )
     {
@@ -51,15 +68,7 @@ router.post('/',async (request,response) =>{
         {
             response.redirect('/');
         }
-        try
-        {
-            await objectClass(idElement);
-            result.message = 'Dado eliminado com sucesso :-D';
-        }catch(e)
-        {
-            result.message = 'Erro na actualização do dado.!\n Por favor tente mais tarde';
-        }
-        response.json(result);
+        await objectClass(idElement);
     }else
     {
         response.redirect('/');
