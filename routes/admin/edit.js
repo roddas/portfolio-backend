@@ -41,33 +41,34 @@ tableClass.set('projectos', async (nome, descricao, estado, link, idElement)=>{
     await projectos.updateProjecto(nome,descricao,estado,link,idElement);
 });
 
-router.post('/',async (request,response) =>{
+router.get('/:table/:id',async (request,response) =>{
     if (request.session.token === (process.env.TOKEN + process.env.TOKEN2) )
     {
-        const { nome, descricao, estado, link, idElement, table } = request.body;
-        let objectClass = tableClass.get(table);
-        let result = {};
-        if (objectClass === undefined)
+        const {table,id} = request.params;
+        if(table.length === 0 || id.length === 0)
         {
             response.redirect('/');
         }
-        try
-        {
-            if (table !== 'projectos')
-            {
-                await objectClass(idElement, descricao);
-            }else
-            {
-                await objectClass(nome, descricao, estado, link, idElement);
-            }
-            result.message = 'Dado actualizado com sucesso :-D';
-        }catch(e)
-        {
-            result.message = 'Erro na actualização do dado.!\n Por favor tente mais tarde';
-        }
-        response.json(result);
+        response.render('edit',{table});
     }else
     {
+        response.redirect('/');
+    }
+});
+router.get('/:table/:id', async (request, response) => {
+    if (request.session.token === (process.env.TOKEN + process.env.TOKEN2)) {
+        const { nome, descricao, estado, link, idElement, table } = request.body;
+        let objectClass = tableClass.get(table);
+        if (objectClass === undefined) {
+            response.redirect('/');
+        }
+        if (table !== 'projectos') {
+            await objectClass(idElement, descricao);
+        } else {
+            await objectClass(nome, descricao, estado, link, idElement);
+        }
+        response.json(result);
+    } else {
         response.redirect('/');
     }
 });
