@@ -1,0 +1,16 @@
+extends adminlayout
+block content
+    .container.has-text-centered
+      form.mt-5(action="#", method="post")
+        .control
+            textarea#textarea(name="descricao",rows='10',cols='30', placeholder= data.descricao_formacao required)
+        .control.mt-3 
+            input.button.is-info.is-outlined(type="submit", value="Editar")
+        span#el(style='display:none;')= data.descricao_formacao
+block scripts
+    script. 
+        var textArea = document.querySelector('textarea');
+        if(textArea)
+        {
+            textArea.value = document.getElementById('el').innerHTML;
+        }
