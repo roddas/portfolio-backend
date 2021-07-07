@@ -55,16 +55,6 @@ router.get('/',async (request,response) =>{
     }
 });
 
-router.patch('/',async (request,response) =>{
-
-    const descricao = request.body.descricao;
-    const tabela = request.body.table;
-    const id = request.body.idElement;
-
-    const dataBase = new Database();
-    console.log(descricao,tabela,id);
-});
-
 router.post('/',async (request,response) =>{
     if (request.session.token === (process.env.TOKEN + process.env.TOKEN2))
     {
