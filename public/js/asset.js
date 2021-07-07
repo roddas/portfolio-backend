@@ -35,6 +35,7 @@ let tabsWithContent = (function () {
     })
     tabs[0].click();
 })();
+/*
 
 let flag = true;
 
@@ -47,14 +48,14 @@ function submit(element)
         let data = {};
         form.forEach((value, key) =>{ data[key] = value });
        (async ()=>{
-           
-        await fetch('/admin/add', {
+
+           await fetch('/admin/add/addFormacaoAcademica', {
                method: 'POST',
                headers: header,
                body: JSON.stringify(data)
            });
            let inputs = document.querySelectorAll('input');
-           for (i of inputs) 
+           for (i of inputs)
            {
                i.value = '';
            }
@@ -63,3 +64,4 @@ function submit(element)
     });
 }
 submit('formacaoAcademicaForm');
+*/
