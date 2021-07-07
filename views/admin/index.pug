@@ -9,15 +9,17 @@ block content
                     li.is-active
                         a(href="#") Academic formation
                     li
-                        a(href="#" id='element' table='linguagens_ferramentas') Language and Tools
+                        a(href="#") Language and Tools
                     li
-                        a(href="#" id='element' table='conhecimentos_tecnicos') Technical knowledge
+                        a(href="#") Technical knowledge
                     li
-                        a(href="#" id='element' table='experiencia') Work experience
+                        a(href="#") Work experience
                     li
-                        a(href="#" id='element' table='idiomas') Idioms 
+                        a(href="#") Idioms
                     li
-                        a(href="#" id='element' table='contactos') Contacts   
+                        a(href="#") Projects 
+                    li
+                        a(href="#") Contacts   
             div
                 .content
                     .tab-content.tab-container
@@ -33,13 +35,12 @@ block content
                                         td.id= val.id_formacao
                                         td.texto= val.descricao_formacao
                                         td 
-                                            a.link.edit(href='/admin/edit/formacao_academica/'+val.id_formacao) Editar
+                                            a.link.edit(href='/admin/edit/editFormacaoAcademica/'+val.id_formacao) Editar
                                             |&nbsp;&nbsp;&nbsp;
-                                            a.link.delet(href='/admin/delete/formacao_academica/'+val.id_formacao) Eliminar
-                        form.mt-5#formacaoAcademicaForm(action="/admin/add", method="POST")
+                                            a.link.delet(href='/admin/delete/deleteFormacaoAcademica/'+val.id_formacao) Eliminar
+                        form.mt-5#formacaoAcademicaForm(action="/admin/add/addFormacaoAcademica", method="POST")
                             .field
                                 p.control
-                                    input(type="hidden", name="table",value='formacao_academica')
                                     input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
                                     input.button.is-info.mt-3.submit(type="submit", value="Inserir")
                     .tab-content.tab-container
@@ -55,13 +56,12 @@ block content
                                         td.id= val.id_ferramenta
                                         td.texto= val.imagem_ferramenta
                                         td 
-                                            a.link.edit(href='#') Editar
+                                            a.link.edit(href='/admin/edit/editLinguagensFerramentas/'+val.id_ferramenta) Editar
                                             |&nbsp;&nbsp;&nbsp;
-                                            a.link.delet(href='#') Eliminar
-                        form.mt-5(action="#", method="POST")
+                                            a.link.delet(href='/admin/delete/deleteLinguagensFerramentas/'+val.id_ferramenta) Eliminar
+                        form.mt-5#formacaoAcademicaForm(action="/admin/add/addLinguagensFerramentas", method="POST")
                             .field
                                 p.control
-                                    input(type="hidden", name="table",value='formacao_academica')
                                     input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
                                     input.button.is-info.mt-3.submit(type="submit", value="Inserir")
                 .tab-content
@@ -70,6 +70,8 @@ block content
                     p Work experience contents 
                 .tab-content
                     p Idioms contents
+                .tab-content
+                    p Projects
                 .tab-content
                     p Contacts contents
 

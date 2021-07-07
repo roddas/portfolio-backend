@@ -1,0 +1,21 @@
+extends ../adminlayout
+block content
+    .container
+        .hidden(style='visibility:hidden;')
+                span#el= data.imagem_ferramenta
+        div.mt-5.mb-5
+            a.has-text-left(href="/logout") Sair 
+        img(src='' alt="")
+        form.form.has-text-centered(action="/admin/edit/editLinguagensFerramentas", method="post",enctype='multipart/form-data') 
+            .control(style='width:70%;margin:0 auto;')
+                input(type="hidden", name="id",value=data.id_ferramenta)
+                input.input.mt-3(type="file", name="descricao" required )
+            .control.mt-3
+                input.button.is-info(type="submit", value="Salvar") 
+block scripts
+    script.
+        var img = document.querySelector('img');
+        if(img)
+        {
+            img.setAttribute('src',document.getElementById('el').innerHTML);
+        }
