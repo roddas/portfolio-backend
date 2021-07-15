@@ -21,7 +21,7 @@ router.post('/', async (request, response) => {
     if (request.session.token === (process.env.TOKEN + process.env.TOKEN2)) {
         const linguagensFerramentas = new LinguagensFerramentas();
         const { id, descricao } = request.body;
-        response.json(request.body);
+        response.json(request.files);
         //await linguagensFerramentas.updateLinguagemFerramenta(id, descricao);
         //response.redirect('/admin');
     }
