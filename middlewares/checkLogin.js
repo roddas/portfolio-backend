@@ -1,7 +1,8 @@
-module.exports = (request,response) =>
+module.exports = (request,response,next) =>
 {
-    if (request.session.token === (process.env.TOKEN + process.env.TOKEN2))
+    if (request.session.token === (process.env.TOKEN + process.env.TOKEN2) && request.session.token !== undefined)
     {
+        console.log('ok');
         next();
     }else
     {
