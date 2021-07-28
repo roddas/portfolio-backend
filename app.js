@@ -24,6 +24,7 @@ app.use('/secret',require('./routes/secret'));
 app.use('/login',require('./routes/login'));
 app.use('/admin', require('./routes/admin/index'));
 app.use('/logout', require('./routes/admin/logout'));
+
 /*
 
 //  Add routes
