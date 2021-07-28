@@ -29,20 +29,32 @@ block content
                                     th ID 
                                     th Descrição
                                     th Ação
-                            tb
+                            // Formação acadêmica
+                            tb 
                                 each val in formacaoAcademica
                                     tr
                                         td.id= val.id_formacao
                                         td.texto= val.descricao_formacao
                                         td 
-                                            a.link.edit(href='/admin/edit/editFormacaoAcademica/'+val.id_formacao) Editar
+                                            a.link.editFormacaoAcademica(href='/admin/edit/editFormacaoAcademica/'+val.id_formacao) Editar
                                             |&nbsp;&nbsp;&nbsp;
-                                            a.link.delet(href='/admin/delete/deleteFormacaoAcademica/'+val.id_formacao) Eliminar
+                                            a.link.deleteFormacaoAcademica(href='/admin/delete/deleteFormacaoAcademica/'+val.id_formacao) Eliminar
+
+                                            // Pop-Up Modal           
+                                            .modal.modalFormacaoACademica
+                                                .modal-background
+                                                .modal-content
+                                                    form(action="/admin/edit/editFormacaoAcademica/", method="post")
+                                                        .control
+                                                            input(type="hidden", name="id" , value=val.id_formacao)
+                                                            textarea.textarea(placeholder="e.g. Hello world",value=val.descricao_formacao)
+                                                button.modal-close.modal-closeFormacaoACademica.is-large( aria-label="close")
                         form.mt-5#formacaoAcademicaForm(action="/admin/add/addFormacaoAcademica", method="POST")
                             .field
                                 p.control
                                     input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
                                     input.button.is-info.mt-3.submit(type="submit", value="Inserir")
+                         
                     .tab-content.tab-container
                         table.table
                             thead
@@ -50,20 +62,16 @@ block content
                                     th ID 
                                     th Descrição
                                     th Ação
+                            // Linguagens e Ferramentas
                             tb
                                 each val in linguagensFerramentas
                                     tr
                                         td.id= val.id_ferramenta
                                         td.texto= val.imagem_ferramenta
                                         td 
-                                            a.link.edit(href='/admin/edit/editLinguagensFerramentas/'+val.id_ferramenta) Editar
+                                            a.link.editLinguagensFerramentas(href='/admin/edit/editLinguagensFerramentas/'+val.id_ferramenta) Editar
                                             |&nbsp;&nbsp;&nbsp;
-                                            a.link.delet(href='/admin/delete/deleteLinguagensFerramentas/'+val.id_ferramenta) Eliminar
-                        form.mt-5#formacaoAcademicaForm(action="/admin/add/addLinguagensFerramentas", method="POST")
-                            .field
-                                p.control
-                                    input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
-                                    input.button.is-info.mt-3.submit(type="submit", value="Inserir")
+                                            a.link.deleteLinguagensFerramentas(href='/admin/delete/deleteLinguagensFerramentas/'+val.id_ferramenta) Eliminar
                 .tab-content
                     p Technical knowledge contents
                 .tab-content
@@ -77,3 +85,41 @@ block content
 
 block scripts
     script(src="/js/asset.js")
+    script.
+        function sendData(url,method,[...array])
+        {
+            let header = new Headers();
+            let form = new FormData(array);
+            let data = {};
+
+            form.forEach((value, key) =>{ data[key] = value });
+            header.append('Content-Type', 'application/json');
+            
+            (async ()=>{
+                let response = await fetch(url, {
+                    method: method,
+                    headers: header,
+                    body: JSON.stringify(data)
+                });
+                console.log(response);
+            })();
+        }
+        let editFormacaoAcademica = document.querySelector('.editFormacaoAcademica');
+        let deleteFormacaoAcademica = document.querySelector('.deleteFormacaoAcademica');
+        let closeBtnFormacaoAcademica = document.querySelector('.modal-closeFormacaoAcademica');
+        
+        editFormacaoAcademica.addEventListener('click',e =>{
+            e.preventDefault();
+
+            let modal = document.querySelector('.modalFormacaoACademica');
+            modal.setAttribute('class','modal modalFormacaoACademica is-active');
+            
+            
+            closeBtnFormacaoAcademica.addEventListener('click', e =>{
+                
+                e.preventDefault();
+                modal.setAttribute('class', 'modal modalFormacaoACademica is-hidden');
+            });
+            
+        });
+         
