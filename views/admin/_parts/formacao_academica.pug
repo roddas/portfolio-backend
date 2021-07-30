@@ -1,0 +1,32 @@
+.tab-content.tab-container
+                        table.table
+                            thead
+                                tr 
+                                    th ID 
+                                    th Descrição
+                                    th Ação
+                            // Formação acadêmica
+                            tb 
+                                each val in formacaoAcademica
+                                    tr
+                                        td.id= val.id_formacao
+                                        td.texto= val.descricao_formacao
+                                        td 
+                                            a.link.editFormacaoAcademica(href='/admin/edit/editFormacaoAcademica/'+val.id_formacao) Editar
+                                            |&nbsp;&nbsp;&nbsp;
+                                            a.link.deleteFormacaoAcademica(href='/admin/delete/deleteFormacaoAcademica/'+val.id_formacao) Eliminar
+
+                                            // Pop-Up Modal           
+                                            .modal.modalFormacaoACademica
+                                                .modal-background
+                                                .modal-content
+                                                    form(action="/admin/edit/editFormacaoAcademica/", method="post")
+                                                        .control
+                                                            input(type="hidden", name="id" , value=val.id_formacao)
+                                                            textarea.textarea(placeholder="e.g. Hello world",value=val.descricao_formacao)
+                                                button.modal-close.modal-closeFormacaoACademica.is-large( aria-label="close")
+                        form.mt-5#formacaoAcademicaForm(action="/admin/add/addFormacaoAcademica", method="POST")
+                            .field
+                                p.control
+                                    input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
+                                    input.button.is-info.mt-3.submit(type="submit", value="Inserir")

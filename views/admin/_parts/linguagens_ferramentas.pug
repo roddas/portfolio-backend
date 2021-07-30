@@ -1,0 +1,17 @@
+.tab-content.tab-container
+                        table.table
+                            thead
+                                tr 
+                                    th ID 
+                                    th Descrição
+                                    th Ação
+                            // Linguagens e Ferramentas
+                            tb
+                                each val in linguagensFerramentas
+                                    tr
+                                        td.id= val.id_ferramenta
+                                        td.texto= val.imagem_ferramenta
+                                        td 
+                                            a.link.editLinguagensFerramentas(href='/admin/edit/editLinguagensFerramentas/'+val.id_ferramenta) Editar
+                                            |&nbsp;&nbsp;&nbsp;
+                                            a.link.deleteLinguagensFerramentas(href='/admin/delete/deleteLinguagensFerramentas/'+val.id_ferramenta) Eliminar
