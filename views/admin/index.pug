@@ -22,66 +22,13 @@ block content
                         a(href="#") Contacts   
             div
                 .content
-                    .tab-content.tab-container
-                        table.table
-                            thead
-                                tr 
-                                    th ID 
-                                    th Descrição
-                                    th Ação
-                            // Formação acadêmica
-                            tb 
-                                each val in formacaoAcademica
-                                    tr
-                                        td.id= val.id_formacao
-                                        td.texto= val.descricao_formacao
-                                        td 
-                                            a.link.editFormacaoAcademica(href='/admin/edit/editFormacaoAcademica/'+val.id_formacao) Editar
-                                            |&nbsp;&nbsp;&nbsp;
-                                            a.link.deleteFormacaoAcademica(href='/admin/delete/deleteFormacaoAcademica/'+val.id_formacao) Eliminar
-
-                                            // Pop-Up Modal           
-                                            .modal.modalFormacaoACademica
-                                                .modal-background
-                                                .modal-content
-                                                    form(action="/admin/edit/editFormacaoAcademica/", method="post")
-                                                        .control
-                                                            input(type="hidden", name="id" , value=val.id_formacao)
-                                                            textarea.textarea(placeholder="e.g. Hello world",value=val.descricao_formacao)
-                                                button.modal-close.modal-closeFormacaoACademica.is-large( aria-label="close")
-                        form.mt-5#formacaoAcademicaForm(action="/admin/add/addFormacaoAcademica", method="POST")
-                            .field
-                                p.control
-                                    input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
-                                    input.button.is-info.mt-3.submit(type="submit", value="Inserir")
-                         
-                    .tab-content.tab-container
-                        table.table
-                            thead
-                                tr 
-                                    th ID 
-                                    th Descrição
-                                    th Ação
-                            // Linguagens e Ferramentas
-                            tb
-                                each val in linguagensFerramentas
-                                    tr
-                                        td.id= val.id_ferramenta
-                                        td.texto= val.imagem_ferramenta
-                                        td 
-                                            a.link.editLinguagensFerramentas(href='/admin/edit/editLinguagensFerramentas/'+val.id_ferramenta) Editar
-                                            |&nbsp;&nbsp;&nbsp;
-                                            a.link.deleteLinguagensFerramentas(href='/admin/delete/deleteLinguagensFerramentas/'+val.id_ferramenta) Eliminar
-                .tab-content
-                    p Technical knowledge contents
-                .tab-content
-                    p Work experience contents 
-                .tab-content
-                    p Idioms contents
-                .tab-content
-                    p Projects
-                .tab-content
-                    p Contacts contents
+                    include _parts/formacao_academica
+                    include _parts/linguagens_ferramentas
+                    include _parts/conhecimentos_tecnicos
+                    include _parts/experiencia
+                    include _parts/idiomas
+                    include _parts/projectos
+                    include _parts/contactos
 
 block scripts
     script(src="/js/asset.js")
