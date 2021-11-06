@@ -1,4 +1,4 @@
-const autoloader = '../controllers/databasesClasses/autoloader';
+const autoloader = '../models/autoloader';
 const { Projectos } = require(autoloader);
 const { ConhecimentosTecnicos } = require(autoloader);
 const { Contactos } = require(autoloader);
