@@ -51,22 +51,3 @@ block scripts
                 console.log(response);
             })();
         }
-        let editFormacaoAcademica = document.querySelector('.editFormacaoAcademica');
-        let deleteFormacaoAcademica = document.querySelector('.deleteFormacaoAcademica');
-        let closeBtnFormacaoAcademica = document.querySelector('.modal-closeFormacaoAcademica');
-        
-        editFormacaoAcademica.addEventListener('click',e =>{
-            e.preventDefault();
-
-            let modal = document.querySelector('.modalFormacaoACademica');
-            modal.setAttribute('class','modal modalFormacaoACademica is-active');
-            
-            
-            closeBtnFormacaoAcademica.addEventListener('click', e =>{
-                
-                e.preventDefault();
-                modal.setAttribute('class', 'modal modalFormacaoACademica is-hidden');
-            });
-            
-        });
-         

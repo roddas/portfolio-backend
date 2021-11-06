@@ -1,0 +1,20 @@
+extends ../adminlayout
+block content
+    .container
+        .hidden(style='visibility:hidden;')
+                span#el= data.descricao_conhecimento
+        div.mt-5.mb-5
+            a.has-text-left(href="/logout") Sair 
+        form.form.has-text-centered(action="/admin/update/updateConhecimentosTecnicos", method="post") 
+            .control(style='width:70%;margin:0 auto;')
+                input(type="hidden", name="id",value=data.id_conhecimento)
+                textarea.textarea(name="descricao", cols="30", rows="10")
+            .control.mt-3
+                input.button.is-info(type="submit", value="Salvar") 
+block scripts
+    script.
+        var textArea = document.querySelector('textarea');
+        if(textArea)
+        {
+            textArea.value = document.getElementById('el').innerHTML;
+        }

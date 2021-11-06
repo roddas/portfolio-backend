@@ -1,5 +1,5 @@
 const express = require('express');
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const session = require('express-session');
 
 const path = require('path');
@@ -25,14 +25,24 @@ app.use('/login',require('./routes/login'));
 app.use('/admin', require('./routes/admin/index'));
 app.use('/logout', require('./routes/admin/logout'));
 
+/**
+ * Admin routes
+ * These routes are aimed to manage the database data
+ * 
+*/
+app.use('/admin/add/addFormacaoAcademica', require('./routes/admin/add/addFormacaoAcademica'));
+app.use('/admin/delete/deleteFormacaoAcademica', require('./routes/admin/delete/deleteFormacaoAcademica'));
+app.use('/admin/update/updateFormacaoAcademica', require('./routes/admin/update/updateFormacaoAcademica'));
+
+
 /*
 
 //  Add routes
 let prefix = '/add/add';
-app.use('/admin'+prefix+'FormacaoAcademica', require('./routes/admin'+prefix+'FormacaoAcademica'));
+app.use('/admin/add/ConhecimentosTecnicos', require('./routes/admin/add/addConhecimentosTecnicos'));
+
 app.use('/admin'+prefix+'Contactos', require('./routes/admin'+prefix+'Contactos'));
 app.use('/admin'+prefix+'Experiencia', require('./routes/admin'+prefix+'Experiencia'));
-app.use('/admin'+prefix+'ConhecimentosTecnicos', require('./routes/admin'+prefix+'ConhecimentosTecnicos'));
 app.use('/admin' + prefix + 'Idioma', require('./routes/admin' + prefix + 'Idioma'));
 app.use('/admin' + prefix + 'Projectos', require('./routes/admin' + prefix + 'Projectos'));
 app.use('/admin' + prefix + 'LinguagensFerramentas', require('./routes/admin' + prefix +'LinguagensFerramentas'));
