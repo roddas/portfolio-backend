@@ -23,7 +23,8 @@ router.post('/', loginMiddleware, async (request, response) => {
     try
     {
         await conhecimentosTecnicos.insertConhecimentosTecnicos(descricao_conhecimento);
-        response.json({status : 201,message : "Sucesso !"});
+        //response.json({status : 201,message : "Sucesso !"});
+        response.redirect("/admin");
 
     }catch(error)
     {

@@ -1,11 +1,5 @@
 const autoloader = '../models/autoloader';
-const { Projectos } = require(autoloader);
-const { ConhecimentosTecnicos } = require(autoloader);
-const { Contactos } = require(autoloader);
-const { Experiencia } = require(autoloader);
-const { FormacaoAcademica } = require(autoloader);
-const { Idiomas } = require(autoloader);
-const { LinguagensFerramentas } = require(autoloader);
+const { LinguagensFerramentas,Idiomas,FormacaoAcademica,Experiencia, Contactos ,Projectos, ConhecimentosTecnicos } = require(autoloader);
 
 exports.renderIndex = async (request, response) => 
 {

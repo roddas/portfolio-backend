@@ -33,21 +33,32 @@ block content
 block scripts
     script(src="/js/asset.js")
     script.
-        function sendData(url,method,[...array])
+        function postData(formElement)
         {
             let header = new Headers();
-            let form = new FormData(array);
+            let form = new FormData(formElement);
             let data = {};
 
             form.forEach((value, key) =>{ data[key] = value });
             header.append('Content-Type', 'application/json');
             
             (async ()=>{
-                let response = await fetch(url, {
-                    method: method,
+                const URL = formElement.getAttribute('action');
+                let response = await fetch(URL, {
+                    method: 'POST',
                     headers: header,
                     body: JSON.stringify(data)
                 });
-                console.log(response);
+                let mensagem = JSON.parse(await response.text());
+                alert(mensagem.message);
+                location.reload();
             })();
         }
+
+        // Formação acadêmica
+        const formacaoAcademicaForm = document.getElementById("formacaoAcademicaForm");
+        formacaoAcademicaForm.addEventListener('submit',e =>{
+            e.preventDefault();
+            postData(formacaoAcademicaForm);
+        });
+        

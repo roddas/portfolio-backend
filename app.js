@@ -68,8 +68,7 @@ app.use('/admin' + prefix + 'Projectos', require('./routes/admin' + prefix + 'Pr
 app.use('/admin' + prefix + 'LinguagensFerramentas', require('./routes/admin' + prefix + 'LinguagensFerramentas'));
 
 */
-app.use((request,response) =>{
-    response.status(404).render("404");
-});
+app.use((request, response) => { response.status(404).render("404") });
+app.use((request, response) => {response.status(500).render("500")});
 
 app.listen(PORT,console.log(`The server is running at ${PORT}`));

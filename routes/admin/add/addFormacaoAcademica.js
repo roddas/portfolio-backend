@@ -19,11 +19,12 @@ router.post('/', loginMiddleware, async (request, response) => {
     try
     {
         await formacaoAcademica.insertFormacaoAcademica(descricao);
-        response.json({status : 201,message : "Sucesso !"});
+        response.json({ status: 201, message: "Dado inserido com sucesso !" });
+       // response.redirect("/admin");
 
     }catch(error)
     {
-
+        response.json({ status: 500, message: "Erro ao cadastrar !" });
     }
     
 });
