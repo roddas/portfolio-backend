@@ -30,8 +30,14 @@ app.use('/logout', require('./routes/admin/logout'));
  * These routes are aimed to manage the database data
  * 
 */
+// Routes for insert elements
 app.use('/admin/add/addFormacaoAcademica', require('./routes/admin/add/addFormacaoAcademica'));
+//app.use('/admin/add/addLinguagensFerramentas', require('./routes/admin/add/addFormacaoAcademica'));
+
+// Routes for delete elements
 app.use('/admin/delete/deleteFormacaoAcademica', require('./routes/admin/delete/deleteFormacaoAcademica'));
+
+// Routes for update elements
 app.use('/admin/update/updateFormacaoAcademica', require('./routes/admin/update/updateFormacaoAcademica'));
 
 
@@ -69,6 +75,5 @@ app.use('/admin' + prefix + 'LinguagensFerramentas', require('./routes/admin' + 
 
 */
 app.use((request, response) => { response.status(404).render("404") });
-app.use((request, response) => {response.status(500).render("500")});
 
 app.listen(PORT,console.log(`The server is running at ${PORT}`));

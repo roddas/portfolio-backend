@@ -25,8 +25,15 @@
                                                             input(type="hidden", name="id" , value=val.id_formacao)
                                                             textarea.textarea(placeholder="e.g. Hello world",value=val.descricao_formacao)
                                                 button.modal-close.modal-closeFormacaoACademica.is-large( aria-label="close")
-                        form.mt-5#formacaoAcademicaForm(action="/admin/add/addFormacaoAcademica", method="POST")
+                        form.mt-5#addFormacaoAcademicaForm(action="/admin/add/addFormacaoAcademica", method="POST")
                             .field
                                 p.control
                                     input.input.is-info(type="text",placeholder='Insira um dado novo' name="descricao" required)
                                     input.button.is-info.mt-3.submit(type="submit", value="Inserir")
+script.
+    const addFormacaoAcademicaForm = document.getElementById("addFormacaoAcademicaForm");
+    addFormacaoAcademicaForm.addEventListener('submit',e =>{
+        e.preventDefault();
+        postData(addFormacaoAcademicaForm);
+        location.reload();
+    });

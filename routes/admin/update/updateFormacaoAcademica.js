@@ -13,21 +13,22 @@ const loginMiddleware = require('../../../middlewares/checkLogin');
 let formacaoAcademica = new FormacaoAcademica();
 
 router.get('/:id', loginMiddleware, async (request, response) => {
-    response.render('admin/update/updateFormacaoAcademica');
+
+    let data = await formacaoAcademica.getFormacaoAcademicaById(request.params['id']);
+    response.render('admin/update/updateFormacaoAcademicaView',{data});
 });
 
 router.post('/', loginMiddleware, async (request, response) => {
 
-    const { id } = request.params;
-    
-
+    const { id, descricao } = request.body;
     try
     {
-        await formacaoAcademica.removeFormacaoAcademica(id);
-        response.redirect("/admin");
+        await formacaoAcademica.updateFormacaoAcademica(id,descricao);
+        response.json({ status: 201, message: "Dado atualizado com sucesso !" });
 
-    } catch (error) {
-
+    } catch (error)
+    {
+        response.json({ status: 500, message: "Erro ao atualizar o dado !" });
     }
 
 });

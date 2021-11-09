@@ -35,33 +35,3 @@ let tabsWithContent = (function () {
     })
     tabs[0].click();
 })();
-/*
-
-let flag = true;
-
-function submit(element)
-{
-    var element = document.getElementById(element);
-    element.addEventListener('submit',e =>{
-        e.preventDefault();
-        let form = new FormData(element);
-        let data = {};
-        form.forEach((value, key) =>{ data[key] = value });
-       (async ()=>{
-
-           await fetch('/admin/add/addFormacaoAcademica', {
-               method: 'POST',
-               headers: header,
-               body: JSON.stringify(data)
-           });
-           let inputs = document.querySelectorAll('input');
-           for (i of inputs)
-           {
-               i.value = '';
-           }
-           location.reload();
-       })();
-    });
-}
-submit('formacaoAcademicaForm');
-*/
