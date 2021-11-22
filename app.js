@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const session = require('express-session');
-
+const multer = require("multer");
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT;
@@ -32,7 +32,7 @@ app.use('/logout', require('./routes/admin/logout'));
 */
 // Routes for insert elements
 app.use('/admin/add/addFormacaoAcademica', require('./routes/admin/add/addFormacaoAcademica'));
-//app.use('/admin/add/addLinguagensFerramentas', require('./routes/admin/add/addFormacaoAcademica'));
+app.use('/admin/add/addLinguagemFerramenta', require('./routes/admin/add/addLinguagensFerramentas'));
 
 // Routes for delete elements
 app.use('/admin/delete/deleteFormacaoAcademica', require('./routes/admin/delete/deleteFormacaoAcademica'));

@@ -7,24 +7,35 @@
  */
 const express = require('express');
 const { LinguagensFerramentas } = require("../../../models/LinguagensFerramentasModel");
-var router = express.Router();
-
 const loginMiddleware = require('../../../middlewares/checkLogin');
+const multer = require("multer");
+const path = require("path");
 
-router.post('/', loginMiddleware, async (request, response) => {
-    
-    const {descricao} = request.body;
-    let linguagensFerramentas = new LinguagensFerramentas();
-    
-    try
-    {
-        await linguagensFerramentas.insertLinguagemFerramenta(descricao);
-        response.json({ status: 201, message: "Dado inserido com sucesso !" });
+let router = express.Router();
 
-    }catch(error)
-    {
-        response.json({ status: 500, message: "Erro ao cadastrar !" });
+const imageStorage = multer.diskStorage({
+    destination: 'public/uploads',
+    filename: (request, file, cb) => {
+        cb(null,Date.now()
+            + path.extname(file.originalname))
     }
+});
+
+const imageUpload = multer({
+    storage: imageStorage,
+    limits: {
+        fileSize: 1000000 // 1000000 Bytes = 1 MB
+    },
+    fileFilter(request, file, cb) {
+        if (!file.originalname.match(/\.(png|jpg|svg|jpeg)$/)) {
+            return cb(new Error('Please upload a Image'))
+        }
+        cb(undefined, true)
+    }
+})
+
+router.post('/', loginMiddleware, imageUpload.single("imagem"), async (request, response,next) => {
+    response.json({message : request.file});
 });
 
 module.exports = router;
