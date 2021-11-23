@@ -10,15 +10,16 @@
                                 each val in linguagensFerramentas
                                     tr
                                         td.id= val.id_ferramenta
-                                        td.texto= val.imagem_ferramenta
+                                        td.texto 
+                                            img(src= val.imagem_ferramenta)
                                         td 
                                             a.link.editLinguagensFerramentas(href='/admin/edit/editLinguagensFerramentas/'+val.id_ferramenta) Editar
                                             |&nbsp;&nbsp;&nbsp;
                                             a.link.deleteLinguagensFerramentas(href='/admin/delete/deleteLinguagensFerramentas/'+val.id_ferramenta) Eliminar
-                        form.mt-5#addLinguagemFerramenta(enctype='multipart/form-data' action="/admin/add/addLinguagemFerramenta", method="POST")
+                        form.mt-5#addLinguagemFerramentaForm(enctype='multipart/form-data' action="/admin/add/addLinguagemFerramenta", method="POST")
                             .file
                                 label.file-label
-                                    input.file-input(type="file", name="imagem" required)
+                                    input.file-input#file_input(type="file", name="imagem" required)
                                     span.file-cta
                                         span.file-icon
                                             i.fas.fa-upload
@@ -26,17 +27,35 @@
                             input.button.is-info.mt-3.submit(type="submit", value="Upload")
                             input.button.is-warning.mt-3.ml-3(type="reset", value="Clear")
 script.
-    /*
-      let addLinguagemFerramenta = document.getElementById("addLinguagemFerramenta");
-    addLinguagemFerramenta.addEventListener("submit", e=>{
+    let addLinguagemFerramentaForm = document.getElementById("addLinguagemFerramentaForm");
+    let fileInput = document.getElementById("file_input");
+
+    addLinguagemFerramentaForm.addEventListener('submit',e =>{
         e.preventDefault();
-        let file = document.getElementsByClassName("file-input")[0];
-        if(!file.value.match(/\.(png|jpg|svg|jpeg)$/))
+        let formData = new FormData();
+        let fileName = fileInput.files[0];
+        formData.append("imagem",fileName);
+        
+        if (!fileName.name.match(/\.(png|jpg|svg|jpeg)$/)) 
         {
-            alert("Please upload a Image");
+            alert('Please upload a Image');
         }else
         {
-            postData(addLinguagemFerramenta); 
+            (async () =>{
+                try
+                {
+                    let endpoint = addLinguagemFerramentaForm.getAttribute("action");
+                    let post = await fetch(endpoint, {
+                        method :'post',
+                        body : formData
+                    });
+                    let response = JSON.parse(await post.text());
+                    alert(response.message);
+                    location.reload();
+                }catch(error)
+                {
+                    console.log(error);
+                }
+            })(); 
         }
     });
-    */

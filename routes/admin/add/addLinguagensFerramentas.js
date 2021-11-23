@@ -13,10 +13,12 @@ const path = require("path");
 
 let router = express.Router();
 
+const DESTINATION = 'public/uploads';
+
 const imageStorage = multer.diskStorage({
-    destination: 'public/uploads',
+    destination: DESTINATION,
     filename: (request, file, cb) => {
-        cb(null,Date.now()
+        return cb(null,Date.now()
             + path.extname(file.originalname))
     }
 });
@@ -24,7 +26,7 @@ const imageStorage = multer.diskStorage({
 const imageUpload = multer({
     storage: imageStorage,
     limits: {
-        fileSize: 1000000 // 1000000 Bytes = 1 MB
+        fileSize: 5000000 // 1000000 Bytes = 1 MB
     },
     fileFilter(request, file, cb) {
         if (!file.originalname.match(/\.(png|jpg|svg|jpeg)$/)) {
@@ -35,7 +37,19 @@ const imageUpload = multer({
 })
 
 router.post('/', loginMiddleware, imageUpload.single("imagem"), async (request, response,next) => {
-    response.json({message : request.file});
+    const fileName = path.join(path.resolve(),DESTINATION, request.file.filename);
+    
+    let linguagensFerramentas = new LinguagensFerramentas();
+    console.log(fileName);
+    try
+    {
+        await linguagensFerramentas.insertLinguagemFerramenta(fileName);
+        response.json({ message: "Upload feito com sucesso :-D" });
+    }catch(error)
+    {
+        console.error(error);
+    }
+
 });
 
 module.exports = router;
