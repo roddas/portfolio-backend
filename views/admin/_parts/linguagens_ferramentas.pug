@@ -11,10 +11,8 @@
                                     tr
                                         td.id= val.id_ferramenta
                                         td.texto 
-                                            img(src= val.imagem_ferramenta)
+                                            img(src= val.imagem_linguagem width='40rem' height='40rem')
                                         td 
-                                            a.link.editLinguagensFerramentas(href='/admin/edit/editLinguagensFerramentas/'+val.id_ferramenta) Editar
-                                            |&nbsp;&nbsp;&nbsp;
                                             a.link.deleteLinguagensFerramentas(href='/admin/delete/deleteLinguagensFerramentas/'+val.id_ferramenta) Eliminar
                         form.mt-5#addLinguagemFerramentaForm(enctype='multipart/form-data' action="/admin/add/addLinguagemFerramenta", method="POST")
                             .file

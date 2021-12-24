@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'./public')));
 app.use(session({
     secret : 'chave',
     maxAge : 1000 * 60 * 60,

@@ -4,7 +4,7 @@ class Projectos
 {
     constructor() 
     {
-        this.TABLE = 'projectos';
+        this.TABLE = 'projetos';
         this.idField = 'id_projeto';
     }
     getTable()

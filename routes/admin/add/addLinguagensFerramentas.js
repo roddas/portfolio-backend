@@ -37,10 +37,9 @@ const imageUpload = multer({
 })
 
 router.post('/', loginMiddleware, imageUpload.single("imagem"), async (request, response,next) => {
-    const fileName = path.join(path.resolve(),DESTINATION, request.file.filename);
+    const fileName = path.join('/uploads', request.file.filename);
     
     let linguagensFerramentas = new LinguagensFerramentas();
-    console.log(fileName);
     try
     {
         await linguagensFerramentas.insertLinguagemFerramenta(fileName);
