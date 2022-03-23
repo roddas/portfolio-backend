@@ -31,7 +31,7 @@ app.use('/logout', require('./routes/admin/logout'));
  * 
 */
 // Routes for insert elements
-app.use('/admin/add/addFormacaoAcademica', require('./routes/admin/add/addFormacaoAcademica'));
+//app.use('/admin/add/addFormacaoAcademica', require('./routes/admin/add/addFormacaoAcademica'));
 app.use('/admin/add/addLinguagemFerramenta', require('./routes/admin/add/addLinguagensFerramentas'));
 
 // Routes for delete elements
