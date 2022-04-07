@@ -1,4 +1,5 @@
-const { Projectos } = require('../models/ProjectosModel');
+/*
+const { Projectos } = require('./ProjectsModel');
 const { ConhecimentosTecnicos } = require('../models/ConhecimentosTecnicosModel');
 const { Contactos } = require('../models/ContactosModel');
 const { Experiencia } = require('../models/ExperienciaModel');
@@ -15,3 +16,4 @@ module.exports = {
     Idiomas,
     LinguagensFerramentas
 }
+*/

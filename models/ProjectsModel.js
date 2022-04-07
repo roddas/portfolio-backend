@@ -1,6 +1,6 @@
-const { dbConnect } = require('./data');
+import { dbConnect } from './data';
 
-class Projectos
+export class ProjectsModel
 {
     constructor() 
     {
@@ -15,7 +15,7 @@ class Projectos
     {
         return this.idField;
     }
-    async getProjectos() 
+    async getProjects() 
     {
         const QUERY = `SELECT * FROM ${this.getTable()};`;
         let connection = await dbConnect();
@@ -23,7 +23,7 @@ class Projectos
         await connection.release();
         return rows;
     }
-    async getProjectoById(id)
+    async getProjectById(id)
     {
         const QUERY = `SELECT * FROM ${this.getTable()} WHERE ${this.getIdField()} = ?;`;
         let connection = await dbConnect();
@@ -31,7 +31,7 @@ class Projectos
         await connection.release();0
         return rows[0];
     }
-    async insertProjecto(nome,descricao,estado,link)
+    async insertProject(nome,descricao,estado,link)
     {
         const QUERY = `INSERT INTO ${this.getTable()} VALUES(NULL,?,?,?,?);`;
         let connection = await dbConnect();
@@ -39,7 +39,7 @@ class Projectos
         await connection.release();
         return rows[0];
     }
-    async removeProjecto(id)
+    async removeProject(id)
     {
         const QUERY = `DELETE FROM ${this.getTable()} WHERE ${this.getIdField()} = ?;`;
         let connection = await dbConnect();
@@ -47,7 +47,7 @@ class Projectos
         await connection.release();
         return rows[0];
     }
-    async updateProjecto(nome,descricao,estado,link,id)
+    async updateProject(nome,descricao,estado,link,id)
     {
         const QUERY = `UPDATE ${this.getTable()} SET nome_projeto = ?,descricao_projeto = ?,estado_projeto = ?,link_projeto = ?  WHERE ${this.getIdField()} = ?;`;
         let connection = await dbConnect();
@@ -56,4 +56,3 @@ class Projectos
         return rows[0];
     }
 }
-module.exports = { Projectos };
