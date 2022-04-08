@@ -4,7 +4,7 @@ class FormacaoAcademica
 {
     constructor() 
     {
-        this.TABLE = 'formacao_academica';
+        this.TABLE = 'formacao_academica_tb';
         this.idField = 'id_formacao';
     }
     getTable()
@@ -31,11 +31,11 @@ class FormacaoAcademica
         await connection.release();0
         return rows[0];
     }
-    async insertFormacaoAcademica(descricao)
+    async insertFormacaoAcademica(descricao,desde,ate)
     {
-        const QUERY = `INSERT INTO ${this.getTable()} VALUES(NULL,?);`;
+        const QUERY = `INSERT INTO ${this.getTable()} VALUES(NULL,?,?,?);`;
         let connection = await dbConnect();
-        const [rows] = await connection.query(QUERY, [descricao]);
+        const [rows] = await connection.query(QUERY, [descricao,desde,ate]);
         await connection.release();
         return rows[0];
     }
@@ -47,11 +47,11 @@ class FormacaoAcademica
         await connection.release();
         return rows[0];
     }
-    async updateFormacaoAcademica(id,descricao) 
+    async updateFormacaoAcademica(id,descricao,desde,ate) 
     {
-        const QUERY = `UPDATE ${this.getTable()} SET descricao_formacao = ?  WHERE ${this.getIdField()} = ?;`;
+        const QUERY = `UPDATE ${this.getTable()} SET descricao_formacao = ?, desde=?, ate=?  WHERE ${this.getIdField()} = ?;`;
         let connection = await dbConnect();
-        const [rows] = await connection.query(QUERY, [descricao,id]);
+        const [rows] = await connection.query(QUERY, [descricao,desde,ate,id]);
         await connection.release();
         return rows[0];
     }
