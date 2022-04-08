@@ -4,7 +4,7 @@ class Idiomas
 {
     constructor() 
     {
-        this.TABLE = 'idiomas';
+        this.TABLE = 'idiomas_tb';
         this.idField = 'id_idioma';
     }
     getTable()
@@ -31,11 +31,11 @@ class Idiomas
         await connection.release();0
         return rows[0];
     }
-    async insertIdioma(descricao)
+    async insertIdioma(idioma,nivel)
     {
-        const QUERY = `INSERT INTO ${this.getTable()} VALUES(NULL,?);`;
+        const QUERY = `INSERT INTO ${this.getTable()} VALUES(NULL,?,?);`;
         let connection = await dbConnect();
-        const [rows] = await connection.query(QUERY, [descricao]);
+        const [rows] = await connection.query(QUERY, [idioma,nivel]);
         await connection.release();
         return rows[0];
     }
@@ -47,11 +47,11 @@ class Idiomas
         await connection.release();
         return rows[0];
     }
-    async updateIdioma(id,descricao) 
+    async updateIdioma(id,idioma,nivel) 
     {
-        const QUERY = `UPDATE ${this.getTable()} SET idioma_idioma = ?  WHERE ${this.getIdField()} = ?;`;
+        const QUERY = `UPDATE ${this.getTable()} SET idioma = ?, nivel = ?  WHERE ${this.getIdField()} = ?;`;
         let connection = await dbConnect();
-        const [rows] = await connection.query(QUERY, [descricao,id]);
+        const [rows] = await connection.query(QUERY, [idioma, nivel,id]);
         await connection.release();
         return rows[0];
     }
