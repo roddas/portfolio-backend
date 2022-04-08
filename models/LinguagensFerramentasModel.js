@@ -4,8 +4,8 @@ class LinguagensFerramentas
 {
     constructor() 
     {
-        this.TABLE = 'linguagens_ferramentas';
-        this.idField = 'id_ferramenta';
+        this.TABLE = 'linguagens_ferramentas_tb';
+        this.idField = 'id_linguagem_ferramenta';
     }
     getTable()
     {
@@ -31,11 +31,12 @@ class LinguagensFerramentas
         await connection.release();0
         return rows[0];
     }
-    async insertLinguagemFerramenta(descricao)
+    async insertLinguagemFerramenta(imagemFerramenta
+        )
     {
         const QUERY = `INSERT INTO ${this.getTable()} VALUES(NULL,?);`;
         let connection = await dbConnect();
-        const [rows] = await connection.query(QUERY, [descricao]);
+        const [rows] = await connection.query(QUERY, [imagemFerramenta]);
         await connection.release();
         return rows[0];
     }
@@ -47,11 +48,11 @@ class LinguagensFerramentas
         await connection.release();
         return rows[0];
     }
-    async updateLinguagemFerramenta(id,descricao)
+    async updateLinguagemFerramenta(id,imagemFerramenta)
     {
         const QUERY = `UPDATE ${this.getTable()} SET imagem_ferramenta = ?  WHERE ${this.getIdField()} = ?;`;
         let connection = await dbConnect();
-        const [rows] = await connection.query(QUERY, [descricao,id]);
+        const [rows] = await connection.query(QUERY, [imagemFerramenta,id]);
         await connection.release();
         return rows[0];
     }
