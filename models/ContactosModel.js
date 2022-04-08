@@ -4,8 +4,8 @@ class Contactos
 {
     constructor() 
     {
-        this.TABLE = 'contactos';
-        this.idField = 'id_contactos';
+        this.TABLE = 'contactos_tb';
+        this.idField = 'id_contacto';
     }
     getTable()
     {
