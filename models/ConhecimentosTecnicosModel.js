@@ -4,7 +4,7 @@ class ConhecimentosTecnicos
 {
     constructor() 
     {
-        this.TABLE = 'conhecimentos_tecnicos';
+        this.TABLE = 'conhecimentos_tecnicos_tb';
         this.idField = 'id_conhecimento';
     }
     getTable()
