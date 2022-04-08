@@ -4,7 +4,7 @@ class Experiencia
 {
     constructor() 
     {
-        this.TABLE = 'experiencia';
+        this.TABLE = 'experiencia_tb';
         this.idField = 'id_experiencia';
     }
     getTable()
