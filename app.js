@@ -27,5 +27,6 @@ app.use('/admin', require('./routes/admin/index'));
 app.use('/logout', require('./routes/admin/logout'));
 
 app.use((request, response) => { response.status(404).json({status : 404,message : 'Are you lost ?'}) });
+app.use((error,request, response) => { response.status(500).json({status : 500,message : 'Internal Server Error'}),console.log(error) });
 
 app.listen(PORT, '0.0.0.0', console.log(`The server is running at ${SERVER_URL}`));
