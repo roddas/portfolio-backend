@@ -1,3 +1,4 @@
+CREATE DATABASE portfolio_db IF NOT EXISTS;
 USE portfolio_db;
 CREATE TABLE IF NOT EXISTS conhecimentos_tecnicos_tb
 (
