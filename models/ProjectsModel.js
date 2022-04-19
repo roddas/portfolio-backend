@@ -1,7 +1,11 @@
 import { dbConnect } from './data';
+import { v4 as uuidv4 } from 'uuid';
 
 export class ProjectsModel
 {
+    #TABLE;
+    #idField;
+
     constructor() 
     {
         this.TABLE = 'projetos';
@@ -33,9 +37,9 @@ export class ProjectsModel
     }
     async insertProject(nome,descricao,estado,link)
     {
-        const QUERY = `INSERT INTO ${this.getTable()} VALUES(NULL,?,?,?,?);`;
+        const QUERY = `INSERT INTO ${this.getTable()} VALUES(?,?,?,?,?);`;
         let connection = await dbConnect();
-        const [rows] = await connection.query(QUERY, [nome, descricao, estado, link]);
+        const [rows] = await connection.query(QUERY, [uuidv4(),nome, descricao, estado, link]);
         await connection.release();
         return rows[0];
     }
